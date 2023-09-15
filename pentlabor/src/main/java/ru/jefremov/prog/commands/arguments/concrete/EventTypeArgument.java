@@ -8,6 +8,9 @@ import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.exceptions.command.InvalidCommandArgumentException;
 import ru.jefremov.prog.models.EventType;
 
+/**
+ * Аргумент, отвечающий за тип события.
+ */
 public class EventTypeArgument extends PrimitiveArgument<EventType> {
     public EventTypeArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex, ArgumentType.ENUM);

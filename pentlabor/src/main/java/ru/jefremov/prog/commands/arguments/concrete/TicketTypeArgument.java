@@ -8,6 +8,9 @@ import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.exceptions.command.InvalidCommandArgumentException;
 import ru.jefremov.prog.models.TicketType;
 
+/**
+ * Аргумент, отвечающий за тип билета.
+ */
 public class TicketTypeArgument extends PrimitiveArgument<TicketType> {
     public TicketTypeArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex, ArgumentType.ENUM);

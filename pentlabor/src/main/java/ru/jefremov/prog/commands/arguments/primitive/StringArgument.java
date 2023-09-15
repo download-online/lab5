@@ -7,6 +7,9 @@ import ru.jefremov.prog.commands.arguments.PrimitiveArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.exceptions.command.InvalidCommandArgumentException;
 
+/**
+ * Строковый аргумент
+ */
 public class StringArgument extends PrimitiveArgument<String> {
     public StringArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex, ArgumentType.STRING);

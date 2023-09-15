@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions.command;
 
+/**
+ * Общий класс для исключений, связанных с аргументами запускаемых команд.
+ */
 public class CommandArgumentException extends CommandLaunchException {
     public CommandArgumentException() {
     }

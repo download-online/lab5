@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions.command;
 
+/**
+ * Исключение, прерывающее выполнение команды из-за внутренней ошибки при её запуске.
+ */
 public class CommandInterruptionException extends CommandLaunchException{
     public CommandInterruptionException() {
     }

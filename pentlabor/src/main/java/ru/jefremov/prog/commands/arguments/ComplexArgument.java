@@ -7,9 +7,18 @@ import ru.jefremov.prog.exceptions.command.CommandLaunchException;
 
 import java.util.ArrayList;
 
+/**
+ * Аргумент, позволяющий передавать команде составные значения какого-то типа.
+ * @param <T>
+ */
 public abstract class ComplexArgument<T> extends AbstractArgument<T> implements Argumentable {
     private final ArrayList<AbstractArgument<?>> subArguments = new ArrayList<>();
 
+    /**
+     * Конструктор комплексного аргумента
+     * @param name наименование
+     * @param argumentable объект, в который будет вложен комплексный аргумент
+     */
     public ComplexArgument(String name, Argumentable argumentable) {
         super(name, ArgumentPlacement.NEWLINE, argumentable, "", ArgumentType.OBJECT);
     }
@@ -20,7 +29,7 @@ public abstract class ComplexArgument<T> extends AbstractArgument<T> implements 
         return formComplexValue();
     }
 
-    public abstract T formComplexValue();
+    protected abstract T formComplexValue();
 
     @Override
     public AbstractCommand referToCommand() {

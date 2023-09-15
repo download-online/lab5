@@ -4,7 +4,9 @@ import ru.jefremov.prog.commands.Argumentable;
 import ru.jefremov.prog.commands.arguments.ArgumentPlacement;
 import ru.jefremov.prog.commands.arguments.primitive.StringArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
-
+/**
+ * Аргумент, отвечающий за название билета.
+ */
 public class TicketNameArgument extends StringArgument {
     public TicketNameArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex);

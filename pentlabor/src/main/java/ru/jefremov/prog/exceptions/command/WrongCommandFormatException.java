@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions.command;
 
+/**
+ * Исключение, возникающее, когда команда запускается с неправильным набором аргументов.
+ */
 public class WrongCommandFormatException extends CommandLaunchException {
     public WrongCommandFormatException() {
     }

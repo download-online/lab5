@@ -4,6 +4,9 @@ package ru.jefremov.prog.models;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * Класс билета. Хранится в коллекции.
+ */
 public class Ticket implements Comparable<Ticket> {
     private static int nextId = 1;
     private transient final int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -16,6 +19,16 @@ public class Ticket implements Comparable<Ticket> {
     private TicketType type; //Поле может быть null
     private Event event; //Поле не может быть null
 
+    /**
+     * Конструктор для билета
+     * @param name название
+     * @param coordinates координаты
+     * @param price цена
+     * @param discount скидка
+     * @param comment комментарий
+     * @param type тип
+     * @param event событие
+     */
     public Ticket(String name, Coordinates coordinates, Double price, double discount, String comment, TicketType type, Event event) {
         this.id = nextId++;
         this.name = name;
@@ -33,44 +46,83 @@ public class Ticket implements Comparable<Ticket> {
         this.creationDate = java.time.LocalDate.now();
     }
 
+    /**
+     * Геттер для идентификатора
+     * @return идентификатор
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Геттер для названия
+     * @return название
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Геттер для координат
+     * @return координаты
+     */
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
+    /**
+     * Геттер для даты создания
+     * @return дата создания
+     */
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
+    /**
+     * Геттер для цены
+     * @return цена
+     */
     public Double getPrice() {
         return price;
     }
 
+    /**
+     * Геттер для скидки
+     * @return скидка
+     */
     public double getDiscount() {
         return discount;
     }
 
+    /**
+     * Геттер для комментария
+     * @return комментарий
+     */
     public String getComment() {
         return comment;
     }
 
+    /**
+     * Геттер для типа
+     * @return тип
+     */
     public TicketType getType() {
         return type;
     }
 
+    /**
+     * Геттер для события
+     * @return событие.
+     */
     public Event getEvent() {
         return event;
     }
 
 
-
+    /**
+     * Метод, позволяющий обновить билет значениями полей другого билета.
+     * @param other
+     */
     public void update(Ticket other) {
         if (other==null) {
             throw new IllegalArgumentException("Cannot update ticket based on null");
@@ -84,6 +136,11 @@ public class Ticket implements Comparable<Ticket> {
         if (!event.identical(other.event)) this.event = other.event;
     }
 
+    /**
+     * Проверяет, что у двух билетов совпадают все поля, кроме Id
+     * @param other другой билет
+     * @return результат проверки
+     */
     public boolean identical(Ticket other) {
         if (other==null) {
             throw new IllegalArgumentException("Cannot compare ticket with null");
@@ -92,6 +149,7 @@ public class Ticket implements Comparable<Ticket> {
                 (discount==other.discount)&&(Objects.equals(comment, other.comment))&&(type==other.type)&&(Objects.equals(event,other.event));
     }
 
+    
     @Override
     public String toString() {
         return "("+creationDate+") "+ type+" ticket " + "[" + name +"]" + " #" + id +
@@ -102,6 +160,7 @@ public class Ticket implements Comparable<Ticket> {
                 " [" + comment + ']';
     }
 
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,11 +181,13 @@ public class Ticket implements Comparable<Ticket> {
         return Objects.equals(comment, ticket.comment);
     }
 
+    
     @Override
     public int hashCode() {
         return Objects.hash(event,name,type,price,discount,creationDate,coordinates,comment,id);
     }
 
+    
     @Override
     public int compareTo(Ticket other) {
         if (other==null) {

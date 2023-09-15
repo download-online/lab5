@@ -11,6 +11,9 @@ import ru.jefremov.prog.managers.Administrator;
 import ru.jefremov.prog.managers.CommandManager;
 import ru.jefremov.prog.managers.Storage;
 
+/**
+ * Абстракция команды.
+ */
 public abstract class AbstractCommand implements Argumentable {
     public final String word;
     public final Parser parser;
@@ -19,6 +22,12 @@ public abstract class AbstractCommand implements Argumentable {
     public final CommandManager manager;
     public final String description;
 
+    /**
+     * Конструктор команды с указанием описания
+     * @param word ключевое слово
+     * @param manager менеджер команд, к которому она привязана
+     * @param description описание
+     */
     public AbstractCommand(String word, CommandManager manager, String description) {
         if (word == null || word.isBlank()) {
             throw new IllegalArgumentException("Command should have a command word");
@@ -33,17 +42,36 @@ public abstract class AbstractCommand implements Argumentable {
         this.description = (description==null? "" : description);
     }
 
+    /**
+     * Конструктор команды без описания
+     * @param word ключевое слово
+     * @param manager менеджер команд, к которому она привязана
+     */
     public AbstractCommand(String word, CommandManager manager) {
         this(word,manager,"");
     }
 
+    /**
+     * Метод для запуска команды.
+     * @param line строка с аргументами
+     * @throws InvalidCommandArgumentException в случае, если аргумент не подходит по формату
+     * @throws IllegalCommandArgumentException в случае, если аргумент не подходит по значению
+     * @throws WrongCommandFormatException в случае, если нарушен общий формат команды с аргументами
+     * @throws CommandInterruptionException в случае, если команда прерывает свой запуск
+     * @throws ExitInterruptionException в случае, если программа завершается без сохранения
+     * @throws QuitInterruptionException в случае, если пользователь прервал процедуру
+     */
     public final void launch(String line) throws InvalidCommandArgumentException, IllegalCommandArgumentException, WrongCommandFormatException, CommandInterruptionException, ExitInterruptionException, QuitInterruptionException {
         parser.parse(line);
         execute();
     }
 
-    public abstract void execute() throws ExitInterruptionException;
+    protected abstract void execute() throws ExitInterruptionException;
 
+    /**
+     * Геттер для ключевого слова
+     * @return ключевое слово
+     */
     public final String getWord() {
         return word;
     }

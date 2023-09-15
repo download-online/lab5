@@ -6,6 +6,9 @@ import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 import ru.jefremov.prog.models.Ticket;
 
+/**
+ * Команда, добавляющая билет в коллекцию, если он меньше всех её элементов.
+ */
 public class AddIfMinCommand extends AbstractCommand {
     private final TicketArgument arg1 = new TicketArgument("Ticket", this);
     public AddIfMinCommand(String word, CommandManager manager) {

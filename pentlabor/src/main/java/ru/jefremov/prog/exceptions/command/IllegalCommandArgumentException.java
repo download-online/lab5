@@ -1,9 +1,18 @@
 package ru.jefremov.prog.exceptions.command;
 
+/**
+ * Исключение, возникающее, когда в аргумент команды передаётся некорректное значение, не прошедшее проверку.
+ * Означает, что значение подошло по формату, но не подходит для использования.
+ */
 public class IllegalCommandArgumentException extends CommandArgumentException {
     public IllegalCommandArgumentException() {
     }
 
+    /**
+     * Конструктор исключения о некорректном значении аргумента
+     * @param argumentName название аргумента
+     * @param enteredText текст, содержащий некорректное значение
+     */
     public IllegalCommandArgumentException(String argumentName, String enteredText) {
         super("Illegal value for "+argumentName+" entered: "+enteredText);
     }

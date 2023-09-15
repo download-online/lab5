@@ -6,6 +6,9 @@ import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 import ru.jefremov.prog.models.Event;
 
+/**
+ * Команда, выводящая все билеты, чьё событие меньше заданного.
+ */
 public class FilterLessThanEventCommand extends AbstractCommand {
     private final EventArgument arg1 = new EventArgument("event", this);
     public FilterLessThanEventCommand(String word, CommandManager manager) {

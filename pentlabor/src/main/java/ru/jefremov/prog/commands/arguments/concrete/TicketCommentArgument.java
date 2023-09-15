@@ -4,7 +4,9 @@ import ru.jefremov.prog.commands.Argumentable;
 import ru.jefremov.prog.commands.arguments.ArgumentPlacement;
 import ru.jefremov.prog.commands.arguments.primitive.StringArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
-
+/**
+ * Аргумент, отвечающий за комментарий билета.
+ */
 public class TicketCommentArgument extends StringArgument {
     public TicketCommentArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex);

@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 
+/**
+ * Абстракция аргумента, вместе с которым команде передаётся значение какого-то типа.
+ * @param <T> тип передаваемого значения.
+ */
 public abstract class AbstractArgument<T> {
     private T value;
     private final AbstractCommand command;
@@ -24,6 +28,14 @@ public abstract class AbstractArgument<T> {
     public final ArgumentType type;
     public final String name;
 
+    /**
+     * Конструктор абстрактного аргумента
+     * @param name наименование
+     * @param placement расположение
+     * @param argumentable объект, в который будет вложен аргумент
+     * @param regex регулярное выражение для определения формата значений
+     * @param type тип этого аргумента
+     */
     public AbstractArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex, ArgumentType type) {
         this.name = ((name==null || name.isBlank()) ? "Argument" : name);
         if (placement==null) throw new IllegalArgumentException("Placement must not be null");
@@ -40,6 +52,14 @@ public abstract class AbstractArgument<T> {
         attached = true;
     }
 
+    /**
+     * Формирует значение аргумента из текстового представления
+     * @param text текстовое представление
+     * @throws InvalidCommandArgumentException в случае, если аргумент не подошёл по формату
+     * @throws IllegalCommandArgumentException в случае, если аргумент не подошёл по значению
+     * @throws CommandInterruptionException в случае, если команда прерывает свой запуск
+     * @throws QuitInterruptionException в случае, если пользователь прервал процедуру
+     */
     public final void form(String text) throws InvalidCommandArgumentException, IllegalCommandArgumentException, CommandInterruptionException, QuitInterruptionException {
         String invalidArgumentDescription = "Argument "+name+" must be represented as "+type.description;
         if (type.textual && text!=null && !text.equals("\\quit") && !pattern.matcher(text).matches()) {
@@ -62,6 +82,10 @@ public abstract class AbstractArgument<T> {
         return true;
     }
 
+    /**
+     * Получение готового значения аргумента
+     * @return готовое значение аргумента
+     */
     public T getValue() {
         T tempValue = value;
         restore();
@@ -72,10 +96,18 @@ public abstract class AbstractArgument<T> {
         value = null;
     }
 
+    /**
+     * Геттер для команды
+     * @return команда
+     */
     public AbstractCommand getCommand() {
         return command;
     }
 
+    /**
+     * Определяет, привязан ли аргумент уже к какому-либо аргументируемому объекту.
+     * @return
+     */
     public boolean isAttached() {
         return attached;
     }
@@ -85,10 +117,20 @@ public abstract class AbstractArgument<T> {
         return name+":"+type.name;
     }
 
+    /**
+     * Формирует строку с приглашением к вводу
+     * @return приглашение к вводу
+     */
     public String getInvitation() {
         return name+": ";
     }
 
+    /**
+     * Формирует значения всех аргументов из списка.
+     * @param arguments список аргументов
+     * @throws CommandInterruptionException в случае, если команда прерывает свой запуск
+     * @throws QuitInterruptionException в случае, если пользователь прервал процедуру, например, заполнение полей формы.
+     */
     public static void form(ArrayList<AbstractArgument<?>> arguments) throws CommandInterruptionException, QuitInterruptionException {
         if (arguments==null) throw new IllegalArgumentException("List of argument must not be null");
         for (AbstractArgument<?> argument : arguments) {

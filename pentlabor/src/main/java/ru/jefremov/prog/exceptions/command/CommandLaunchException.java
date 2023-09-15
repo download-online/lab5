@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions.command;
 
+/**
+ * Исключение, отвечающее за ошибки при попытке запуска команды.
+ */
 public class CommandLaunchException extends Exception{
     public CommandLaunchException() {
     }

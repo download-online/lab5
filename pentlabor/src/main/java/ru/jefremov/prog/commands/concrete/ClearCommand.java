@@ -4,6 +4,9 @@ import ru.jefremov.prog.commands.AbstractCommand;
 import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 
+/**
+ * Команда, очищающая коллекцию.
+ */
 public class ClearCommand extends AbstractCommand {
     public ClearCommand(String word, CommandManager manager) {
         super(word, manager);

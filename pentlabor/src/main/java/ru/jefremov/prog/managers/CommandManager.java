@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
+/**
+ * Класс, ответственный за запуск команд.
+ */
 public class CommandManager {
     private final HashMap<String, AbstractCommand> commandMap = new HashMap<>();
     private final Storage storage;
@@ -20,6 +23,10 @@ public class CommandManager {
     private final ArrayList<HistoryRecord> history = new ArrayList<>();
     private final ArrayList<AbstractCommand> commandList = new ArrayList<>();
 
+    /**
+     * Конструктор для менеджера комманд
+     * @param storage хранилище с коллекцией
+     */
     public CommandManager(Storage storage) {
         if (storage==null) throw new IllegalArgumentException("Storage must not be null");
         this.storage = storage;
@@ -60,6 +67,10 @@ public class CommandManager {
         new SaveCommand("save",this,saveDescription);
     }
 
+    /**
+     * Добавляет менеджеру комманду
+     * @param command комманда
+     */
     public void addCommand(AbstractCommand command) {
         if (command==null) {
             throw new IllegalArgumentException("Command must not be null");
@@ -69,10 +80,22 @@ public class CommandManager {
         commandList.sort(Comparator.comparing(c -> c.word));
     }
 
+    /**
+     * Геттер для хранилища
+     * @return хранилище
+     */
     public Storage getStorage() {
         return storage;
     }
 
+    /**
+     * Запуск команды
+     * @param word ключевое слово команды
+     * @param line строка с аргументами
+     * @throws CommandLaunchException вызывается в случае проблем с запуском команды
+     * @throws ExitInterruptionException вызывается в случае завершения программы без сохранения
+     * @throws QuitInterruptionException вызывается в случае прерывания пользователем текущей процедуры
+     */
     public void launchCommand(String word, String line) throws CommandLaunchException, ExitInterruptionException, QuitInterruptionException {
         AbstractCommand command = commandMap.get(word);
         if (command==null) {
@@ -101,6 +124,9 @@ public class CommandManager {
         }
     }
 
+    /**
+     * Выводит историю
+     */
     public void printHistory() {
         if (history.size()==0) {
             Printer.println("The history does not contain any successfully executed commands");
@@ -110,6 +136,9 @@ public class CommandManager {
         }
     }
 
+    /**
+     * Выводит справку по доступным командам
+     */
     public void printHelp() {
         Printer.println("Help for available commands:");
         commandList.forEach(Printer::println);

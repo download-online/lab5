@@ -2,6 +2,11 @@ package ru.jefremov.prog.models.validation;
 
 import ru.jefremov.prog.models.EventType;
 
+/**
+ * Конкретная реализация валидатора событий.
+ * Позволяет валидировать как сами объекты событий, так и их поля по-отдельности.
+ * Помимо проверки валидности, позволяет получить комментарии, поясняющие, почему значение не прошло валидацию.
+ */
 public class EventValidator extends AbstractEventValidator{
 
 

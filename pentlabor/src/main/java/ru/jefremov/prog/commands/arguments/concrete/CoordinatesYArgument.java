@@ -4,7 +4,9 @@ import ru.jefremov.prog.commands.Argumentable;
 import ru.jefremov.prog.commands.arguments.ArgumentPlacement;
 import ru.jefremov.prog.commands.arguments.primitive.DoubleArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
-
+/**
+ * Аргумент, отвечающий за координату X.
+ */
 public class CoordinatesYArgument extends DoubleArgument {
     public CoordinatesYArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex);

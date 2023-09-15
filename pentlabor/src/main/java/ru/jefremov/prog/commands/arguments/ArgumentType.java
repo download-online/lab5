@@ -1,5 +1,8 @@
 package ru.jefremov.prog.commands.arguments;
 
+/**
+ * Содержит информацию о типе аргумента: его регулярное выражение, составной ли он или нет, и т. д.
+ */
 public enum ArgumentType {
     INTEGER("-?\\d+", "Number", true, "an integer number from "+Integer.MIN_VALUE+" to "+Integer.MAX_VALUE, false),
     BYTE("-?\\d+", "Number", true, "an integer number from "+Byte.MIN_VALUE+" to "+Byte.MAX_VALUE, false),

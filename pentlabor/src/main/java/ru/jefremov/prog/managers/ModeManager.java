@@ -7,12 +7,20 @@ import ru.jefremov.prog.interaction.Submitter;
 import ru.jefremov.prog.modes.*;
 import ru.jefremov.prog.script.Script;
 
+/**
+ * Класс, ответственный за управление режимами программы.
+ */
 public class ModeManager  implements Submitter<String> {
     private Mode currentMode;
     private final InteractiveMode interactiveMode;
     private final ScriptMode scriptMode;
     private final Handler<String> handlerChain = new EmptinessHandler();
 
+    /**
+     * Конструктор менеджера режимов работы.
+     * @param interactiveMode интерактивный режим
+     * @param scriptMode скриптовой режим
+     */
     public ModeManager(InteractiveMode interactiveMode, ScriptMode scriptMode) {
         this.interactiveMode = interactiveMode;
         this.scriptMode = scriptMode;
@@ -41,15 +49,29 @@ public class ModeManager  implements Submitter<String> {
         return handlerChain.handle(line);
     }
 
+    /**
+     * Запуск скрипта
+     * @param script объект скрипта
+     * @throws ScriptRecursionException вызывается, если скрипт вызывает сам себя (косвенно или напрямую).
+     * @throws ScriptRecursionDepthException вызывается, если скрипт рекурсивно запускает слишком много скриптов.
+     */
     public void startScript(Script script) throws ScriptRecursionException, ScriptRecursionDepthException {
         this.currentMode = scriptMode;
         scriptMode.startScript(script);
     }
 
+    /**
+     * Геттер для определения отзывчивости текущего режима.
+     * @return отзывчивость режима
+     */
     public boolean canRespond() {
         return currentMode.isResponsive();
     }
 
+    /**
+     * Завершить работу текущего режима
+     * @return сменился ли завершённый режим на следующий автоматически.
+     */
     public boolean interrupt() {
         if (currentMode.isAutoSwitching()) {
             currentMode = currentMode.finish();
@@ -58,6 +80,10 @@ public class ModeManager  implements Submitter<String> {
         return false;
     }
 
+    /**
+     * Формирует сообщение о завершении работы текущего режима.
+     * @return сообщение
+     */
     public String getEndingMessage() {
         return "..."+currentMode.name+" ended.";
     }

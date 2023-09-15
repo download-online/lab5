@@ -1,11 +1,21 @@
 package ru.jefremov.prog.handlers;
 
-public class QuotationHandler extends Handler<String>{
 
+/**
+ * Обработчик строк, вынимающий выражение из парных кавычек.
+ */
+public class QuotationHandler extends Handler<String>{
+    /**
+     * Конструктор обработчика кавычек без указания следующего обработчика.
+     */
     public QuotationHandler() {
         super(null);
     }
 
+    /**
+     * Конструктор обработчика кавычек.
+     * @param next следующий обработчик
+     */
     public QuotationHandler(Handler<String> next) {
         super(next);
     }

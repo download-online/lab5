@@ -3,6 +3,9 @@ package ru.jefremov.prog.commands.concrete;
 import ru.jefremov.prog.commands.AbstractCommand;
 import ru.jefremov.prog.managers.CommandManager;
 
+/**
+ * Команда, выводящая справку по доступным командам.
+ */
 public class HelpCommand extends AbstractCommand {
     public HelpCommand(String word, CommandManager manager) {
         super(word, manager);

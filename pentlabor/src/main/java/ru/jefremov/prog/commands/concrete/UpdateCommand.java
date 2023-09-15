@@ -8,6 +8,9 @@ import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 import ru.jefremov.prog.models.Ticket;
 
+/**
+ * Команда для обновления билетов.
+ */
 public class UpdateCommand extends AbstractCommand {
     private final TicketIdArgument arg1 = new TicketIdArgument("id", ArgumentPlacement.INLINE,this,null);
     private final TicketArgument arg2 = new TicketArgument("Ticket", this);

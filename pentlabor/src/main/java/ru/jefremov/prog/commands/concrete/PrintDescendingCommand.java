@@ -4,6 +4,9 @@ import ru.jefremov.prog.commands.AbstractCommand;
 import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 
+/**
+ * Команда, выводящая содержимое коллекции в порядке убывания.
+ */
 public class PrintDescendingCommand extends AbstractCommand {
     public PrintDescendingCommand(String word, CommandManager manager) {
         super(word, manager);

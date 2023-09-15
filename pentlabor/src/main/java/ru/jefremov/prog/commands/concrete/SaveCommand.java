@@ -5,6 +5,9 @@ import ru.jefremov.prog.exceptions.SavedCollectionInteractionException;
 import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 
+/**
+ * Команда для сохранения коллекции в файл.
+ */
 public class SaveCommand extends AbstractCommand {
     public SaveCommand(String word, CommandManager manager) {
         super(word, manager);

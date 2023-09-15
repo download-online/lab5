@@ -5,6 +5,9 @@ import ru.jefremov.prog.commands.arguments.ArgumentPlacement;
 import ru.jefremov.prog.commands.arguments.primitive.StringArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 
+/**
+ * Аргумент, отвечающий за название события.
+ */
 public class EventNameArgument extends StringArgument {
     public EventNameArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex);

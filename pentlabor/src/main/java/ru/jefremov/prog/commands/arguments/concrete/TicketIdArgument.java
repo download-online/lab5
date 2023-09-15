@@ -5,6 +5,9 @@ import ru.jefremov.prog.commands.arguments.ArgumentPlacement;
 import ru.jefremov.prog.commands.arguments.primitive.IntegerArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 
+/**
+ * Аргумент, отвечающий за идентификатор билета.
+ */
 public class TicketIdArgument extends IntegerArgument {
     public TicketIdArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex);

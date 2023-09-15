@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions;
 
+/**
+ * Исключение, позволяющее пользователю отменить операцию на каком-то её этапе, например, заполнение составной формы.
+ */
 public class QuitInterruptionException extends Exception{
     public QuitInterruptionException() {
     }

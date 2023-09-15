@@ -6,10 +6,18 @@ import ru.jefremov.prog.models.Ticket;
 import java.io.*;
 import java.util.LinkedHashSet;
 
+/**
+ * Конкретная реализация взаимодействия с файлом, предназначенным для хранения коллекцией.
+ */
 public class CollectionFileInteraction implements SavedCollectionInteracting{
     private final JsonParser jsonParser = new JsonParser();
     private final String path;
     private final File file;
+
+    /**
+     * Конструктор менеджера взаимодействия с файлом коллекции
+     * @param path путь к файлу
+     */
     public CollectionFileInteraction(String path) {
         if (path==null) throw new IllegalArgumentException("Path should not be null");
         this.path = path;

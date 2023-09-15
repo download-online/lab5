@@ -9,6 +9,9 @@ import ru.jefremov.prog.commands.arguments.primitive.StringArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.models.*;
 
+/**
+ * Комплексный аргумент для билета, собирающий его из аргументов, соответствующих его полям.
+ */
 public class TicketArgument extends ComplexArgument<Ticket> {
     private final TicketTypeArgument arg6 = new TicketTypeArgument("Ticket type", ArgumentPlacement.NEWLINE,this,null);
     private final StringArgument arg1 = new TicketNameArgument("Ticket name", ArgumentPlacement.NEWLINE, this, null);

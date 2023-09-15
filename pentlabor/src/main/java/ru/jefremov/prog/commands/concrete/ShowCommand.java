@@ -4,6 +4,9 @@ import ru.jefremov.prog.commands.AbstractCommand;
 import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 
+/**
+ * Команда для вывода содержимого коллекции.
+ */
 public class ShowCommand extends AbstractCommand {
     public ShowCommand(String word, CommandManager manager) {
         super(word, manager);

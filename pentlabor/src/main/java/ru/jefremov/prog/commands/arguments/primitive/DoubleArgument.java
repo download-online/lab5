@@ -7,6 +7,9 @@ import ru.jefremov.prog.commands.arguments.PrimitiveArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.exceptions.command.InvalidCommandArgumentException;
 
+/**
+ * Дробный аргумент
+ */
 public class DoubleArgument extends PrimitiveArgument<Double> {
     public DoubleArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex, ArgumentType.DOUBLE);

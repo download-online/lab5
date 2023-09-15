@@ -7,6 +7,9 @@ import ru.jefremov.prog.commands.arguments.PrimitiveArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.exceptions.command.InvalidCommandArgumentException;
 
+/**
+ * Целочисленный аргумент типа long
+ */
 public class LongArgument extends PrimitiveArgument<Long> {
     public LongArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex, ArgumentType.LONG);

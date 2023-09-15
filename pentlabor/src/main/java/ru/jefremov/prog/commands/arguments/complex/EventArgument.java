@@ -10,7 +10,9 @@ import ru.jefremov.prog.commands.arguments.primitive.LongArgument;
 import ru.jefremov.prog.commands.arguments.primitive.StringArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.models.Event;
-
+/**
+ * Комплексный аргумент для события, собирающий его из аргументов, соответствующих его полям.
+ */
 public class EventArgument extends ComplexArgument<Event> {
     private final EventTypeArgument arg3 = new EventTypeArgument("Event type", ArgumentPlacement.NEWLINE, this, null);
     private final StringArgument arg1 = new EventNameArgument("Event name", ArgumentPlacement.NEWLINE,this,null);

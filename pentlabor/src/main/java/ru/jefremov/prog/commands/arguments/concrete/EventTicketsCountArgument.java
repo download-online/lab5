@@ -5,6 +5,9 @@ import ru.jefremov.prog.commands.arguments.ArgumentPlacement;
 import ru.jefremov.prog.commands.arguments.primitive.LongArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 
+/**
+ * Аргумент, отвечающий за количество билетов на событие.
+ */
 public class EventTicketsCountArgument extends LongArgument {
     public EventTicketsCountArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex) {
         super(name, placement, argumentable, regex);

@@ -7,8 +7,11 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
-
+/**
+ * Класс представляет собой адаптер дробных чисел для хранения в виде JSON.
+ */
 public class DoubleAdapter implements JsonDeserializer<Double> {
+    
     @Override
     public Double deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         String textForm = json.getAsJsonPrimitive().getAsString();

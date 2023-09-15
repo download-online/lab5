@@ -6,6 +6,9 @@ import ru.jefremov.prog.interaction.Printer;
 import ru.jefremov.prog.managers.CommandManager;
 import ru.jefremov.prog.models.Ticket;
 
+/**
+ * Команда, удаляющая все элементы, меньшие, чем заданный.
+ */
 public class RemoveLowerCommand extends AbstractCommand {
     private final TicketArgument arg1 = new TicketArgument("Ticket", this);
     public RemoveLowerCommand(String word, CommandManager manager) {

@@ -1,5 +1,9 @@
 package ru.jefremov.prog.exceptions.command;
 
+/**
+ * Исключение, возникающее, когда в аргумент команды передаётся значение, не подходящее ему по формату.
+ * Означает невозможность преобразования строкового значения аргумента в значение его типа.
+ */
 public class InvalidCommandArgumentException extends CommandArgumentException {
     public InvalidCommandArgumentException() {
     }

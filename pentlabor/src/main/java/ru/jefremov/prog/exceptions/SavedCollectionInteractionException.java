@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions;
 
+/**
+ * Общий класс исключений, возникающих при взаимодействии с хранилищем коллекции.
+ */
 public class SavedCollectionInteractionException extends Exception {
     public SavedCollectionInteractionException() {
     }

@@ -12,6 +12,9 @@ import ru.jefremov.prog.script.Script;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * Команда, отвечающая за запуск скриптов из файлов.
+ */
 public class ExecuteScriptCommand extends AbstractCommand {
     private final StringArgument arg1 = new ScriptArgument("file_name", ArgumentPlacement.INLINE,this,null);
     public ExecuteScriptCommand(String word, CommandManager manager) {

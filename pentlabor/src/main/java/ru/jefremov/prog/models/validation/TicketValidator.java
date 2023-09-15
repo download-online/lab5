@@ -4,12 +4,22 @@ import ru.jefremov.prog.models.TicketType;
 
 import java.time.LocalDate;
 
-
+/**
+ * Конкретная реализация валидатора билетов.
+ * Позволяет валидировать как сами объекты билетов, так и их поля по-отдельности.
+ * Помимо проверки валидности, позволяет получить комментарии, поясняющие, почему значение не прошло валидацию.
+ */
 public class TicketValidator extends AbstractTicketValidator {
 
+    /**
+     * Конструктор для конкретного валидатора билетов
+     * @param eventValidator валидатор событий
+     * @param coordinatesValidator валидатор координат
+     */
     public TicketValidator(AbstractEventValidator eventValidator, AbstractCoordinatesValidator coordinatesValidator) {
         super(eventValidator, coordinatesValidator);
     }
+
 
     @Override
     public String reviewId(int id) {

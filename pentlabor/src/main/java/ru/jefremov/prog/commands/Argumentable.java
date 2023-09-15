@@ -2,9 +2,20 @@ package ru.jefremov.prog.commands;
 
 import ru.jefremov.prog.commands.arguments.AbstractArgument;
 
+/**
+ * Интерфейс, означающий, что класс способен принимать аргументы и привязывать их к конкретной команде.
+ */
 public interface Argumentable {
+    /**
+     * Получить команду, с которой связан этот объект, чтобы привязать к ней новые аргументы
+     * @return команда
+     */
     AbstractCommand referToCommand();
 
+    /**
+     * Вложить в эту аргументируемую сущность новый аргумент
+     * @param argument новый аргумент
+     */
     default void acceptArgument(AbstractArgument<?> argument) {
         if (argument==null) {
             throw new IllegalArgumentException("Configuration problem: argument should exist");
@@ -18,5 +29,9 @@ public interface Argumentable {
         processAccepting(argument);
     }
 
+    /**
+     * Абстрактный процесс добавления аргумента. Не следует переопределять при наследовании от имплементирующих этот интерфейс классов.
+     * @param argument новый аргумент
+     */
     void processAccepting(AbstractArgument<?> argument);
 }

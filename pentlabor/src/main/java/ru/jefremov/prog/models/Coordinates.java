@@ -2,7 +2,15 @@ package ru.jefremov.prog.models;
 
 import java.util.Objects;
 
+/**
+ * Класс координат. Хранится в коллекции.
+ */
 public class Coordinates implements Comparable<Coordinates> {
+    /**
+     * Конструктор для координат
+     * @param x икс
+     * @param y игрек
+     */
     public Coordinates(int x, Double y) {
         this.x = x;
         this.y = y;
@@ -11,14 +19,27 @@ public class Coordinates implements Comparable<Coordinates> {
     private final int x; //Значение поля должно быть больше -915
     private final Double y; //Поле не может быть null
 
+    /**
+     * Геттер для X
+     * @return X
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Геттер для Y
+     * @return Y
+     */
     public Double getY() {
         return y;
     }
 
+    /**
+     * Проверяет, что у двух координат одинаковые поля. По аналогии с билетами и событиями.
+     * @param other
+     * @return
+     */
     public boolean identical(Coordinates other) {
         if (other==null) {
             throw new IllegalArgumentException("Cannot compare coordinates with null");
@@ -26,6 +47,7 @@ public class Coordinates implements Comparable<Coordinates> {
         return (x==other.x) && (Objects.equals(y, other.y));
     }
 
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,15 +61,18 @@ public class Coordinates implements Comparable<Coordinates> {
         return (x == that.x);
     }
 
+    
     @Override
     public int hashCode() {
         return Objects.hash(y,x);
     }
 
+
     @Override
     public String toString() {
         return "[" + x + " ― "+y+"]";
     }
+
 
     @Override
     public int compareTo(Coordinates other) {

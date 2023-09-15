@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Класс, отвечающий за преобразование строки с аргументами команды в набор значений необходимых типов.
+ * Реалзиация на основе регулярных выражений.
+ */
 public class Parser {
     public final ArrayList<AbstractArgument<?>> newlineArguments = new ArrayList<>();
     public final ArrayList<AbstractArgument<?>> inlineArguments = new ArrayList<>();
@@ -19,12 +23,21 @@ public class Parser {
     private Pattern pattern;
     private String regex;
 
+    /**
+     * Конструктор парсера
+     * @param command команда, к которой он привязан
+     */
     public Parser(AbstractCommand command) {
         if (command==null) throw new IllegalArgumentException("Command must not be null");
         this.command = command;
         regex = "^"+command.getWord();
     }
 
+    /**
+     * Метод для привязки аргументов к команде и регистрации их в парсере.
+     * @param argument аргумент
+     * @return подошёл ли аргумент для добавления
+     */
     protected boolean acceptArgument(AbstractArgument<?> argument) {
         if (initialised) throw new IllegalStateException("Trying to add argument to initialised parser");
         if (argument==null) throw new IllegalArgumentException("Argument must not be null");
@@ -37,6 +50,15 @@ public class Parser {
         return newlineArguments.add(argument);
     }
 
+    /**
+     * Разбиение строки с аргументами на набор значений с необходимыми для запуска команды типами.
+     * @param line строка с аргументами
+     * @throws InvalidCommandArgumentException в случае, если аргумент не подходит по формату
+     * @throws IllegalCommandArgumentException в случае, если аргумент не подходит по значению
+     * @throws WrongCommandFormatException в случае, если нарушен общий формат команды с аргументами
+     * @throws CommandInterruptionException в случае, если команда прерывает свой запуск
+     * @throws QuitInterruptionException в случае, если пользователь прервал процедуру
+     */
     protected void parse(String line) throws InvalidCommandArgumentException, IllegalCommandArgumentException, WrongCommandFormatException, CommandInterruptionException, QuitInterruptionException {
         if (!initialised) {
             regex+="$";
@@ -61,6 +83,10 @@ public class Parser {
         AbstractArgument.form(newlineArguments);
     }
 
+    /**
+     * Формирует строку, описывающую нужный для команды формат вместе с её аргументами
+     * @return строка с форматом
+     */
     public String getCommandFormat() {
         StringBuilder commandFormat = new StringBuilder(command.word);
         for (AbstractArgument<?> argument:

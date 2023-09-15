@@ -11,6 +11,9 @@ import ru.jefremov.prog.models.validation.TicketValidator;
 import ru.jefremov.prog.modes.InteractiveMode;
 import ru.jefremov.prog.modes.ScriptMode;
 
+/**
+ * Класс, основной задачей которого служит сборка остальных компонентов.
+ */
 public class Administrator {
     public final String collectionFile;
     public final EventValidator eventValidator = new EventValidator();
@@ -26,6 +29,11 @@ public class Administrator {
     public final CommandManager commandManager;
     public final CollectionFileInteraction collectionFileInteraction;
 
+    /**
+     * Конструктор для администратора
+     * @param interactiveSubmitter интерактивный поставщик строк
+     * @param path путь к файлу, содержащему коллекцию
+     */
     public Administrator(InteractiveSubmitter interactiveSubmitter, String path) {
         this.interactiveSubmitter = interactiveSubmitter;
         interactiveMode = new InteractiveMode(null, interactiveSubmitter);

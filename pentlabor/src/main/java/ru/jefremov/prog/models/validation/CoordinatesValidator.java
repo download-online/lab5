@@ -1,5 +1,10 @@
 package ru.jefremov.prog.models.validation;
 
+/**
+ * Конкретная реализация валидатора координат.
+ * Позволяет валидировать как сами объекты координат, так и их поля по-отдельности.
+ * Помимо проверки валидности, позволяет получить комментарии, поясняющие, почему значение не прошло валидацию.
+ */
 public class CoordinatesValidator extends AbstractCoordinatesValidator{
     @Override
     public String reviewX(int x) {

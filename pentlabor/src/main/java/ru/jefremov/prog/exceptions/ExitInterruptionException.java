@@ -1,5 +1,8 @@
 package ru.jefremov.prog.exceptions;
 
+/**
+ * Исключение, отвечающее за прерывание программы для её завершения.
+ */
 public class ExitInterruptionException extends Exception{
     public ExitInterruptionException() {
     }

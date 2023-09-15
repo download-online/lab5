@@ -9,7 +9,9 @@ import ru.jefremov.prog.commands.arguments.primitive.DoubleArgument;
 import ru.jefremov.prog.commands.arguments.primitive.IntegerArgument;
 import ru.jefremov.prog.exceptions.command.IllegalCommandArgumentException;
 import ru.jefremov.prog.models.Coordinates;
-
+/**
+ * Комплексный аргумент для объекта координат, собирающий его из аргументов, соответствующих его полям.
+ */
 public class CoordinatesArgument extends ComplexArgument<Coordinates> {
     private final IntegerArgument arg1 = new CoordinatesXArgument("X", ArgumentPlacement.NEWLINE,this,null);
     private final DoubleArgument arg2 = new CoordinatesYArgument("Y",ArgumentPlacement.NEWLINE,this,null);
