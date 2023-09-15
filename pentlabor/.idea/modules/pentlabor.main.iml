@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../src/main">
+      <excludeFolder url="file://$MODULE_DIR$/../../src/main/java/ru/jefremov/prog/models/validation/BROKEN_fabrics" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/main/java/ru/jefremov/prog/models/builders" />
+    </content>
+  </component>
+</module>
