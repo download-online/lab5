@@ -10,6 +10,9 @@ import java.util.NoSuchElementException;
  */
 public abstract class Mode implements Submitter<String> {
     private final Mode next;
+    /**
+     * Название режима
+     */
     public final String name;
     private final Submitter<String> submitter;
     private final boolean responsive;

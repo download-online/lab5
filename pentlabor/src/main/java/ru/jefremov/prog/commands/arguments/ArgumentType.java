@@ -15,10 +15,25 @@ public enum ArgumentType {
     ENUM("\\S+", "OptionName", true, "the name of the option", false),
     OBJECT("", "Object", false, "composite object", true);
 
+    /**
+     * регулярное выражение
+     */
     public final String regex;
+    /**
+     * наименование
+     */
     public final String name;
+    /**
+     * возможно ли представить в текстовой форме
+     */
     public final boolean textual;
+    /**
+     * описание
+     */
     public final String description;
+    /**
+     * является ли составным
+     */
     public final boolean complex;
     ArgumentType(String regex, String name, boolean textual, String description, boolean complicity) {
         this.regex = regex;

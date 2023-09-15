@@ -15,11 +15,29 @@ import ru.jefremov.prog.managers.Storage;
  * Абстракция команды.
  */
 public abstract class AbstractCommand implements Argumentable {
+    /**
+     * ключевое слово
+     */
     public final String word;
+    /**
+     * парсер аргументов
+     */
     public final Parser parser;
+    /**
+     * хранилище
+     */
     public final Storage storage;
+    /**
+     * администратор
+     */
     public final Administrator administrator;
+    /**
+     * менеджер команд
+     */
     public final CommandManager manager;
+    /**
+     * описание
+     */
     public final String description;
 
     /**

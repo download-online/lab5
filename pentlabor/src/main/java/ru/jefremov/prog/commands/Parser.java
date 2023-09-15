@@ -15,9 +15,9 @@ import java.util.regex.Pattern;
  * Реалзиация на основе регулярных выражений.
  */
 public class Parser {
-    public final ArrayList<AbstractArgument<?>> newlineArguments = new ArrayList<>();
-    public final ArrayList<AbstractArgument<?>> inlineArguments = new ArrayList<>();
-    public final AbstractCommand command;
+    protected final ArrayList<AbstractArgument<?>> newlineArguments = new ArrayList<>();
+    protected final ArrayList<AbstractArgument<?>> inlineArguments = new ArrayList<>();
+    protected final AbstractCommand command;
     private boolean initialised;
     private int currentArgumentIndex = 0;
     private Pattern pattern;

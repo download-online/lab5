@@ -15,18 +15,57 @@ import ru.jefremov.prog.modes.ScriptMode;
  * Класс, основной задачей которого служит сборка остальных компонентов.
  */
 public class Administrator {
+    /**
+     * Путь к файлу с коллекцией
+     */
     public final String collectionFile;
+    /**
+     * Валидатор событий
+     */
     public final EventValidator eventValidator = new EventValidator();
+    /**
+     * Валидатор координат
+     */
     public final CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
+    /**
+     * Валидатор билетов
+     */
     public final TicketValidator ticketValidator = new TicketValidator(eventValidator,coordinatesValidator);
+    /**
+     * Хранилище
+     */
     public final Storage storage = new Storage(this, ticketValidator);
+    /**
+     * Менеджер скриптов
+     */
     public final ScriptManager scriptManager = new ScriptManager(5);
+    /**
+     * Интерактивный поставщик строк
+     */
     public final InteractiveSubmitter interactiveSubmitter;
+    /**
+     * Интерактивный режим работы
+     */
     public final InteractiveMode interactiveMode;
+    /**
+     * Скриптовой режим работы
+     */
     public final ScriptMode scriptMode;
+    /**
+     * Менеджер режимов работы
+     */
     public final ModeManager modeManager;
+    /**
+     * Цепь из обработчика пустых строк и обработчика кавычек
+     */
     public final Handler<String> quotationHandler = new EmptinessHandler(new QuotationHandler());
+    /**
+     * Менеджер команд
+     */
     public final CommandManager commandManager;
+    /**
+     * Менеджер взаимодействия с файлом, содержащим коллекцию
+     */
     public final CollectionFileInteraction collectionFileInteraction;
 
     /**

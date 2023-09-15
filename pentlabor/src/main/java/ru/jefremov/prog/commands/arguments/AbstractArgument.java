@@ -19,13 +19,29 @@ import java.util.regex.Pattern;
 public abstract class AbstractArgument<T> {
     private T value;
     private final AbstractCommand command;
+    /**
+     * администратор
+     */
     public final Administrator administrator;
+    /**
+     * менеджер режимов работы
+     */
     public final ModeManager modeManager;
     private final boolean attached;
-    public final ArgumentPlacement placement;
+    protected final ArgumentPlacement placement;
+    /**
+     * регулярное выражение, определяющее формат аргумента
+     */
     public final String regex;
-    public final Pattern pattern;
+    protected final Pattern pattern;
+    /**
+     * тип (характеристика) аргумента
+     * Не путать с типом значения аргумента!
+     */
     public final ArgumentType type;
+    /**
+     * наименование
+     */
     public final String name;
 
     /**
@@ -34,7 +50,7 @@ public abstract class AbstractArgument<T> {
      * @param placement расположение
      * @param argumentable объект, в который будет вложен аргумент
      * @param regex регулярное выражение для определения формата значений
-     * @param type тип этого аргумента
+     * @param type тип (характеристика) этого аргумента
      */
     public AbstractArgument(String name, ArgumentPlacement placement, Argumentable argumentable, String regex, ArgumentType type) {
         this.name = ((name==null || name.isBlank()) ? "Argument" : name);
