@@ -28,7 +28,10 @@ public abstract class AbstractArgument<T> {
      */
     public final ModeManager modeManager;
     private final boolean attached;
-    protected final ArgumentPlacement placement;
+    /**
+     * расположение аргумента
+     */
+    public final ArgumentPlacement placement;
     /**
      * регулярное выражение, определяющее формат аргумента
      */
